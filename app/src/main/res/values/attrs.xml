@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TitleBar  -->
+
+    <declare-styleable name="TitleBar">
+        <attr name="leftWidth" format="dimension"/>
+        <attr name="rightWidth" format="dimension"/>
+        <attr name="leftText" format="string"/>
+        <attr name="rightText" format="string"/>
+        <attr name="titleBarText" format="string"/>
+        <attr name="titleBarColor" format="color"/>
+        <attr name="titleSize" format="dimension"/>
+        <attr name="titleBarButtonPadding" format="dimension"/>
+
+        <attr name="leftTextColor" format="color"/>
+        <attr name="rightTextColor" format="color"/>
+
+        <attr name="leftButtonMargin" format="dimension"/>
+        <attr name="rightButtonMargin" format="dimension"/>
+
+        <attr name="leftButtonBackground" format="reference"/>
+        <attr name="rightButtonBackground" format="reference"/>
+
+        <attr name="leftButtonPressed" format="color"/>
+        <attr name="rightButtonPressed" format="color"/>
+        <attr name="bashLineColor" format="color"/>
+    </declare-styleable>
+
+    <!-- 设置页的每一项 -->
+    <declare-styleable name="TwoSideMenuLine">
+        <attr name="leftId" format="reference"/>
+        <attr name="menuText" format="string"/>
+        <attr name="leftImg" format="reference"/>
+        <attr name="rightImg" format="reference"/>
+        <attr name="menuTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="TwoSidePointMenu">
+        <attr name="pointMenuText" format="string"/>
+        <attr name="pointLeftImg" format="reference"/>
+        <attr name="pointRightNum" format="integer"/>
+        <attr name="pointTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SymbolTitle">
+        <attr name="parentView" format="reference"/>
+        <attr name="rightImage" format="reference"/>
+        <attr name="titleText" format="string"/>
+        <attr name="titleResId" format="reference"/>
+        <attr name="titleTextSize" format="dimension"/>
+        <attr name="rightImageWidth" format="dimension"/>
+        <attr name="titleColor" format="color"/>
+    </declare-styleable>
+
+    <!--<declare-styleable name="EditTextDrawable">-->
+    <!--<attr name="lineColor" format="color" />-->
+    <!--<attr name="hint" format="string" />-->
+    <!--<attr name="text" format="string" />-->
+    <!--<attr name="hintColor" format="color" />-->
+    <!--<attr name="textColor" format="color" />-->
+    <!--<attr name="inputType">-->
+    <!--<enum name="text" value="1" />-->
+    <!--<enum name="number" value="2" />-->
+    <!--<enum name="number_password" value="18" />-->
+    <!--<enum name="password" value="129" />-->
+    <!--<enum name="phone" value="3" />-->
+    <!--</attr>-->
+    <!--<attr name="textsize" format="dimension" />-->
+    <!--<attr name="drawableWidth" format="dimension" />-->
+    <!--<attr name="drawableLeftPadding" format="dimension" />-->
+    <!--<attr name="drawableRightPadding" format="dimension" />-->
+    <!--<attr name="drawableLeft" format="reference" />-->
+    <!--</declare-styleable>-->
+    <!--<declare-styleable name="PercentProgressBar">-->
+    <!--<attr name="colors" format="color" />-->
+    <!--<attr name="textSize" format="dimension" />-->
+    <!--<attr name="textVisibility" format="boolean" />-->
+    <!--<attr name="barHeight" format="dimension" />-->
+    <!--</declare-styleable>-->
+    <!--<declare-styleable name="CircleImageView">-->
+    <!--<attr name="civ_border_width" format="dimension" />-->
+    <!--<attr name="civ_border_color" format="color" />-->
+    <!--<attr name="civ_border_overlay" format="boolean" />-->
+    <!--<attr name="civ_fill_color" format="color" />-->
+    <!--</declare-styleable>-->
+
+    <declare-styleable name="CircleButton">
+        <attr name="cb_color" format="color"/>
+        <attr name="cb_pressedRingWidth" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="TwoSideEditorMenuLine">
+        <attr name="iconImage" format="reference"/>
+        <attr name="labelText" format="string"/>
+        <attr name="editorHintText" format="string"/>
+        <attr name="editorHintColor" format="color"/>
+        <attr name="editorColor" format="color"/>
+        <attr name="iconID" format="reference"/>
+        <attr name="editorID" format="reference"/>
+        <attr name="labelID" format="reference"/>
+        <attr name="editorBackGroundColor" format="color|reference"/>
+        <attr name="editorTextSize" format="dimension"/>
+        <attr name="editorInputType" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="TwoSideStyleRangeSlider">
+        <attr name="min" format="integer"/>
+        <attr name="max" format="integer"/>
+        <attr name="unpressedTargetRadius" format="dimension"/>
+        <attr name="pressedTargetRadius" format="dimension"/>
+        <attr name="targetColor" format="color"/>
+        <attr name="insideRangeLineColor" format="color"/>
+        <attr name="outsideRangeLineColor" format="color"/>
+        <attr name="startMin" format="integer"/>
+        <attr name="startMax" format="integer"/>
+        <attr name="insideRangeLineStrokeWidth" format="dimension"/>
+        <attr name="outsideRangeLineStrokeWidth" format="dimension"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="SlideDetailsLayout">
+        <!-- float value for indicate the moment of switch panel-->
+        <attr name="percent" format="float"/>
+        <!-- how long the animation keep-->
+        <attr name="duration" format="integer"/>
+        <!-- default panel to show after init-->
+        <attr name="default_panel" format="enum">
+            <enum name="front" value="0"/>
+            <enum name="behind" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ManualClassTimeItemView">
+        <attr name="startWeek" format="integer"/>
+        <attr name="endWeek" format="integer"/>
+        <attr name="startTime" format="integer"/>
+        <attr name="endTime" format="integer"/>
+        <attr name="classDay" format="enum">
+            <enum name="monday" value="1"/>
+            <enum name="tuesday" value="2"/>
+            <enum name="wednesday" value="3"/>
+            <enum name="thursday" value="4"/>
+            <enum name="friday" value="5"/>
+            <enum name="saturday" value="6"/>
+            <enum name="sunday" value="7"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SearchView">
+        <attr name="imgWidth" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="searchShowText" format="string"/>
+        <attr name="showTextSize" format="dimension"/>
+        <attr name="image" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="SearchViewLayout">
+        <attr name="searchHeight" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension"/>
+        <attr name="civ_border_color" format="color"/>
+        <attr name="civ_border_overlay" format="boolean"/>
+        <attr name="civ_fill_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="BoxInfoView">
+        <attr name="leftImage" format="reference"/>
+        <attr name="boxInfoTitle" format="string"/>
+        <attr name="boxInfoSubTitle" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="TabItemView">
+        <attr name="item_icon" format="reference"/>
+        <attr name="item_color" format="color"/>
+        <attr name="text" format="string"/>
+        <attr name="text_size" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SmallCalicoView">
+        <attr name="calicoColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="LoginEditText">
+        <attr name="iconRes" format="reference"/>
+        <attr name="editType" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="password" value="1"/>
+            <enum name="none" value="2"/>
+            <enum name="number" value="3"/>
+        </attr>
+        NONE
+        <attr name="inputHint" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="DotView">
+        <attr name="dot_radius" format="dimension"/>
+        <attr name="dot_span" format="dimension"/>
+        <attr name="dot_unselected_color" format="integer"/>
+        <attr name="dot_selected_color" format="integer"/>
+    </declare-styleable>
+
+    <!--<declare-styleable name="PercentLayout_Layout">-->
+    <!--<attr name="layout_widthPercent" format="string" />-->
+    <!--<attr name="layout_heightPercent" format="string" />-->
+
+    <!--<attr name="layout_marginPercent" format="string" />-->
+    <!--<attr name="layout_marginLeftPercent" format="string" />-->
+    <!--<attr name="layout_marginTopPercent" format="string" />-->
+    <!--<attr name="layout_marginRightPercent" format="string" />-->
+    <!--<attr name="layout_marginBottomPercent" format="string" />-->
+    <!--<attr name="layout_marginStartPercent" format="string" />-->
+    <!--<attr name="layout_marginEndPercent" format="string" />-->
+
+    <!--<attr name="layout_aspectRatio" format="string" />-->
+    <!--<attr name="layout_textSizePercent" format="string" />-->
+
+    <!--<attr name="layout_maxWidthPercent" format="string" />-->
+    <!--<attr name="layout_maxHeightPercent" format="string" />-->
+    <!--<attr name="layout_minWidthPercent" format="string" />-->
+    <!--<attr name="layout_minHeightPercent" format="string" />-->
+
+    <!--<attr name="layout_paddingPercent" format="string" />-->
+    <!--<attr name="layout_paddingTopPercent" format="string" />-->
+    <!--<attr name="layout_paddingBottomPercent" format="string" />-->
+    <!--<attr name="layout_paddingLeftPercent" format="string" />-->
+    <!--<attr name="layout_paddingRightPercent" format="string" />-->
+    <!--</declare-styleable>-->
+
+    <declare-styleable name="BoxToolbarView">
+        <attr name="toolBarText" format="string"/>
+        <attr name="arrBarText" format="string"/>
+        <attr name="showArr" format="boolean"/>
+        <attr name="fontSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="NewCircleProgressBar">
+        <attr name="cpb_strokeWidth" format="dimension"/>
+        <attr name="cpb_startColor" format="color"/>
+        <attr name="cpb_endColor" format="color"/>
+        <attr name="cpb_duration" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="SpringView">
+        <attr name="type">
+            <enum name="overlap" value="0"/>
+            <enum name="follow" value="1"/>
+        </attr>
+        <attr name="give">
+            <enum name="both" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+            <enum name="none" value="3"/>
+        </attr>
+        <attr name="header" format="reference"/>
+        <attr name="footer" format="reference"/>
+    </declare-styleable>
+</resources>

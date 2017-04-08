@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eee"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/item_list_image"
+        android:layout_width="42dp"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/class_table_icon_selector" />
+
+    <LinearLayout
+        android:id="@+id/item_linear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/sp_16">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_list_filename"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:hint="文件名"
+                android:maxLines="1"
+                android:paddingBottom="6dp"
+                android:paddingTop="6dp"
+                android:singleLine="true"
+                android:textSize="@dimen/dp_22" />
+
+            <TextView
+                android:id="@+id/item_list_file_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/app_trans_down"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8"
+                android:textSize="@dimen/dp_22"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/item_list_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/sp_12"
+            android:layout_marginRight="@dimen/sp_12"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_list_file_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/item_list_file_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="时间" />
+
+
+            <TextView
+                android:id="@+id/item_list_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="middle"
+                android:gravity="right"
+                android:paddingRight="@dimen/sp_16"
+                android:singleLine="true"
+                android:text="提取码" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/item_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#11000000" />
+    </LinearLayout>
+
+</LinearLayout>

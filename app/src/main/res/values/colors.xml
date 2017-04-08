@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="back_ground_gray_title_color">#333333</color>
+
+    <color name="gray">#627676</color>
+
+
+    <color name="blue">#4990d6</color>
+    <color name="black">#30383f</color>
+    <color name="lightblue">#e9eef2</color>
+    <color name="shadow">#70a3d6</color>
+    <color name="deepBlue">#0a57a2</color>
+    <color name="img_up">#5e93c7</color>
+    <color name="img_down">#2e485f</color>
+    <color name="img_share">#455664</color>
+    <color name="dark">#30383f</color>
+    <color name="dark_text">#333333</color>
+    <color name="gray_text">#8b8b8b</color>
+    <!--<color name="dark">#c5d0da</color>-->
+
+
+
+    <color name="gray_deep">#9a909a</color>
+    <color name="gray_normal">#c1bac1</color>
+    <color name="gray_light">#ece9ec</color>
+
+    <color name="dark_deep">#2e2e2e</color>
+    <color name="dark_normal">#535353</color>
+    <color name="dark_light">#a5a5a5</color>
+
+    <color name="red">#f96666</color>
+    <color name="green">#32b9aa</color>
+    <color name="green1">#21d9aa</color>
+    <color name="blue_light">#e9faf8</color>
+    <color name="white">#ffffff</color>
+    <color name="night_light">#464646</color>
+
+    <!-- UCrop colors -->
+    <color name="ucrop_color_toolbar_widget">@color/white</color>
+</resources>

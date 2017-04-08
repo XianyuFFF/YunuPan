@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">云U盘</string>
+
+    <string name="app_record">文件记录</string>
+    <string name="app_upload_file">文件上传</string>
+    <string name="app_download_file">文件下载</string>
+    <string name="app_trans_file">文件传输</string>
+
+
+    <string name="app_upload">上传</string>
+    <string name="app_download">下载</string>
+
+    <string name="app_upload_choose_file">选择文件上传</string>
+
+    <string name="app_trans_pause">暂停</string>
+    <string name="app_trans_stop">停止</string>
+    <string name="app_trans_down">完成</string>
+    <string name="app_trans_uploading">上传中</string>
+    <string name="app_trans_downloading">下载中</string>
+
+    <string name="app_un_support">不支持的文件类型</string>
+</resources>
