@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 
 public class WelcomeActivity extends FragmentActivity {
 
-    @BindView(R.id.welcome_background)
+    @BindView(R.id.wel_background)
     LinearLayout welBack;
 
     private Context context = WelcomeActivity.this;
@@ -33,7 +33,7 @@ public class WelcomeActivity extends FragmentActivity {
         Logger.init();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_wel_cloud);
         ButterKnife.bind(this);
 
 

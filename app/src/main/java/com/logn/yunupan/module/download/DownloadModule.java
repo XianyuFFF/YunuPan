@@ -6,6 +6,8 @@ import com.logn.yunupan.entity.greendao.FileDownloadBean;
 import com.logn.yunupan.entity.greendao.FileInfoBean;
 import com.logn.yunupan.utils.ToastShort;
 import com.logn.yunupan.utils.eventbus.EventBusInstance;
+import com.logn.yunupan.utils.eventbus.EventDialogForFile;
+import com.logn.yunupan.utils.eventbus.EventToastInfo;
 import com.logn.yunupan.utils.greendao.DBManagerD;
 import com.logn.yunupan.utils.greendao.DBManagerR;
 import com.logn.yunupan.utils.greendao.DBManagerU;
@@ -96,6 +98,9 @@ public class DownloadModule {
 
     public boolean findFileWithCode(String code) {
         //只检查record数据库
+        if(code==null||code==""){
+            return false;
+        }
         List<FileInfoBean> beans = dbr.queryWithCode(code);
         if (beans.size() > 0) {
             for (FileInfoBean bean : beans) {
@@ -103,7 +108,8 @@ public class DownloadModule {
                 if (path != null && !path.isEmpty()) {
                     File file = new File(path);
                     if (file.isFile()) {
-                        EventBusInstance.getBusInstance().post(code + "->文件存在");
+                        //通知生成对话框。
+                        EventBusInstance.getBusInstance().post(new EventDialogForFile(bean));
                         return true;
                     }
                 }

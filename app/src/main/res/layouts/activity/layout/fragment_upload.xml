@@ -11,8 +11,7 @@
         android:layout_height="48dp"
         android:background="#f5f5f5"
         lfkdsk:leftButtonBackground="@mipmap/icon_back"
-        lfkdsk:rightButtonBackground="@mipmap/icon_download_cloud"
-        lfkdsk:titleBarColor="#333333"
+        lfkdsk:titleBarColor="@color/title_bar_color"
         lfkdsk:titleBarText="@string/app_upload_file">
 
     </com.logn.yunupan.views.TitleBarView.TitleBar>

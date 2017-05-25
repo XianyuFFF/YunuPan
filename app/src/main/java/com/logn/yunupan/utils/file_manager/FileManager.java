@@ -20,6 +20,7 @@ import com.logn.yunupan.utils.EasyBarUtils;
 import com.logn.yunupan.utils.FileGetPathUtil;
 import com.logn.yunupan.utils.FileTypeUtils;
 import com.logn.yunupan.utils.FileUtils;
+import com.logn.yunupan.utils.StatusBarUtil;
 import com.logn.yunupan.utils.ToastShort;
 import com.logn.yunupan.utils.eventbus.EventBusInstance;
 import com.logn.yunupan.utils.eventbus.EventGetFilePath;
@@ -52,6 +53,7 @@ public class FileManager extends BaseActivity implements AdapterView.OnItemLongC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_manager);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.status_bar_color));
         initView();
         //intent = getIntent();
         //where = intent.getIntExtra("WHERE", 0);
@@ -291,10 +293,8 @@ public class FileManager extends BaseActivity implements AdapterView.OnItemLongC
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        EventBusInstance.getBusInstance().post(new EventToastInfo("点击位置->"+position+"\tisInRoot->"+isInRoot));
-        if(isInRoot&&position==fileList.size()-1){
+        if (isInRoot && position == fileList.size() - 1) {
             start2GetFile("*/*");
-
             return;
         }
         parent_stack.push(currentListPath);
@@ -311,7 +311,7 @@ public class FileManager extends BaseActivity implements AdapterView.OnItemLongC
             if (file.isDirectory()) {
                 //显示子目录及其文件
                 ShowMyDir(path);
-                EventBusInstance.getBusInstance().post(new EventToastInfo("文件路径：" + path));
+                //EventBusInstance.getBusInstance().post(new EventToastInfo("文件路径：" + path));
                 /*
                 if (where == 0) {
                     ShowMyDir(path);

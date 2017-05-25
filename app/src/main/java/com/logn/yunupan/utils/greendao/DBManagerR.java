@@ -57,6 +57,14 @@ public class DBManagerR {
      * @param fileInfoBean
      */
     public void insertFileInfo(FileInfoBean fileInfoBean) {
+//        long id = fileInfoBean.getFile_id();
+//        List<FileInfoBean> list = queryAll();
+//        for(FileInfoBean bean:list){
+//            if(bean.getFile_id()==id){
+//                update(bean);
+//                return;
+//            }
+//        }
         FileInfoBeanDao fileInfoBeanDao = getFIfoDaoWrite();
         fileInfoBeanDao.insert(fileInfoBean);
     }
@@ -114,7 +122,9 @@ public class DBManagerR {
 //        qb.where(FileInfoBeanDao.Properties.File_code.gt(file_code));
         List<FileInfoBean> list = new ArrayList<>();
         for (FileInfoBean bean : qb.list()) {
-            if (bean.getFile_code().equals(file_code)) {
+            String code = bean.getFile_code();
+            if (code == null) continue;
+            if (code.equals(file_code)) {
                 list.add(bean);
             }
         }

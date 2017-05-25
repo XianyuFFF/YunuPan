@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:background="@color/blue"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:easy="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/y138">
+    android:layout_height="@dimen/y138"
+    android:background="@color/blue"
+    android:orientation="horizontal">
 
     <com.example.easybar.EasyBar
         android:id="@+id/easyBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y138"
-        easy:title="优云"
         easy:iconMargin_left_and_right="@dimen/x24"
         easy:iconMargin_top_and_bottom="@dimen/x34"
-        easy:my_background="@color/blue"
-        easy:titleSize="@dimen/y66"
-        easy:titleColor="@color/white"
-        easy:leftIcon="@drawable/back"
-        />
+        easy:leftIcon="@mipmap/icon_back"
+        easy:my_background="#f5f5f5"
+        easy:titleColor="@color/black"
+        easy:title="优云"
+        easy:titleSize="@dimen/y66" />
 </LinearLayout>

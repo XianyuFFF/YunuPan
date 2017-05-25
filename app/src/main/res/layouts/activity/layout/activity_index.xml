@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.logn.yunupan.views.ViewPagerIndex.view.viewpager.SViewPager
+        android:id="@+id/index_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.logn.yunupan.views.ViewPagerIndex.view.viewpager.SViewPager>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#f00" />
+
+    <com.logn.yunupan.views.ViewPagerIndex.view.indicator.FixedIndicatorView
+        android:id="@+id/index_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="4dp">
+
+    </com.logn.yunupan.views.ViewPagerIndex.view.indicator.FixedIndicatorView>
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.logn.yunupan.module.QRScan.zxing.ZXingView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lfkdsk="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/zxingview"
+    style="@style/MatchMatch"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="false"
+    lfkdsk:qrcv_animTime="1000"
+    lfkdsk:qrcv_borderColor="@android:color/white"
+    lfkdsk:qrcv_borderSize="1dp"
+    lfkdsk:qrcv_cornerColor="@color/application_theme_color"
+    lfkdsk:qrcv_cornerLength="20dp"
+    lfkdsk:qrcv_cornerSize="6dp"
+    lfkdsk:qrcv_isCenterVertical="true"
+    lfkdsk:qrcv_isOnlyDecodeScanBoxArea="true"
+    lfkdsk:qrcv_isShowTipBackground="true"
+    lfkdsk:qrcv_isShowTipTextAsSingleLine="true"
+    lfkdsk:qrcv_maskColor="#9c000000"
+    lfkdsk:qrcv_qrCodeTipText="将二维码放入框内即可自动扫描"
+    lfkdsk:qrcv_rectWidth="270dp"
+    lfkdsk:qrcv_scanLineColor="@color/application_theme_color"
+    lfkdsk:qrcv_scanLineSize="1dp"
+    lfkdsk:qrcv_toolbarHeight="@dimen/action_bar_height">
+
+    <FrameLayout
+        android:id="@+id/scan_qr_permission_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <com.logn.yunupan.views.TitleBarView.TitleBar
+        android:id="@+id/scan_qr_activity_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        lfkdsk:bashLineColor="@android:color/transparent"
+        lfkdsk:leftButtonBackground="@mipmap/icon_close_white"
+        lfkdsk:leftButtonMargin="@dimen/action_bar_button_margin"
+        lfkdsk:leftWidth="@dimen/action_bar_button_width"
+        lfkdsk:rightButtonBackground="@mipmap/pic"
+        lfkdsk:rightButtonMargin="@dimen/action_bar_button_margin"
+        lfkdsk:rightWidth="@dimen/action_bar_button_width"
+        lfkdsk:titleBarButtonPadding="@dimen/action_bar_button_padding"
+        lfkdsk:titleBarColor="@color/back_ground_yellow_title_color" />
+
+</com.logn.yunupan.module.QRScan.zxing.ZXingView>

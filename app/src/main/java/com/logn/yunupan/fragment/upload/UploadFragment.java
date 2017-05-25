@@ -136,9 +136,7 @@ public class UploadFragment extends Fragment implements UploadContract.View, OnR
 
         @Override
         public void onRightClick() {
-            Intent intent = new Intent();
-            intent.setClass(context, DownloadActivity.class);
-            startActivity(intent);
+
         }
 
         @Override

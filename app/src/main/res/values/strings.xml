@@ -19,4 +19,5 @@
     <string name="app_trans_downloading">下载中</string>
 
     <string name="app_un_support">不支持的文件类型</string>
+    <string name="no_support_type">不支持的消息类型</string>
 </resources>

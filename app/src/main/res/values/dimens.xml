@@ -32,4 +32,8 @@
 
 
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="action_bar_height">49dp</dimen>
+    <dimen name="action_bar_button_margin">4dp</dimen>
+    <dimen name="action_bar_button_width">42dp</dimen>
+    <dimen name="action_bar_button_padding">8dp</dimen>
 </resources>

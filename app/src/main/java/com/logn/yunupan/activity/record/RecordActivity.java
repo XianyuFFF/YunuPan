@@ -16,7 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.logn.yunupan.R;
-import com.logn.yunupan.activity.upload.UploadActivity;
+import com.logn.yunupan.activity.Index.IndexActivity;
+import com.logn.yunupan.activity.scan.ScanQRActivity;
 import com.logn.yunupan.adapter.RecordListAdapter;
 import com.logn.yunupan.adapter.SimpleAdapter;
 import com.logn.yunupan.adapter.listener.OnRecyclerViewItemClickListener;
@@ -25,8 +26,9 @@ import com.logn.yunupan.entity.greendao.FileDownloadBean;
 import com.logn.yunupan.entity.greendao.FileInfoBean;
 import com.logn.yunupan.entity.greendao.FileUploadBean;
 import com.logn.yunupan.utils.FileTypeUtils;
+import com.logn.yunupan.utils.ScanMsgUtil;
 import com.logn.yunupan.utils.SimpleItemDecoration;
-import com.logn.yunupan.utils.StringUtils;
+import com.logn.yunupan.utils.StatusBarUtil;
 import com.logn.yunupan.utils.ToastShort;
 import com.logn.yunupan.utils.clipboard.ClipboardManagerCompat;
 import com.logn.yunupan.utils.eventbus.EventBusInstance;
@@ -41,8 +43,8 @@ import com.logn.yunupan.utils.greendao.DBManagerD;
 import com.logn.yunupan.utils.greendao.DBManagerR;
 import com.logn.yunupan.utils.greendao.DBManagerU;
 import com.logn.yunupan.utils.logger.Logger;
-import com.logn.yunupan.utils.rxjava.YunUPanService;
 import com.logn.yunupan.views.DialogFileOperation;
+import com.logn.yunupan.views.QRCodeView.QRCodeView;
 import com.logn.yunupan.views.TitleBarView.TitleBar;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.OnItemClickListener;
@@ -57,7 +59,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.R.attr.path;
 import static com.logn.yunupan.views.DialogFileOperation.DIALOG_COPY;
 import static com.logn.yunupan.views.DialogFileOperation.DIALOG_DELETE_RECORD;
 import static com.logn.yunupan.views.DialogFileOperation.DIALOG_FILE_INFO;
@@ -93,6 +94,7 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.status_bar_color));
         EventBusInstance.getBusInstance().register(this);
         ToastShort.init(this.context);
 
@@ -117,8 +119,8 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
     }
 
     private void startYunUPanService() {
-        Intent intent = new Intent(getApplicationContext(), YunUPanService.class);
-        startService(intent);
+//        Intent intent = new Intent(getApplicationContext(), YunUPanService.class);
+//        startService(intent);
     }
 
     /**
@@ -173,13 +175,14 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
         titleBar.setOnTitleClickListener(new TitleBar.OnTitleClickListener() {
             @Override
             public void onLeftClick() {
-                Logger.e("dialog_test");
+                Logger.e("qr_test");
+                Intent intent = new Intent(RecordActivity.this, ScanQRActivity.class);
+                startActivity(intent);
             }
 
             @Override
             public void onRightClick() {
-                Intent intent = new Intent();
-                intent.setClass(RecordActivity.this, UploadActivity.class);
+                Intent intent = new Intent(RecordActivity.this, IndexActivity.class);
                 startActivity(intent);
             }
 
@@ -201,17 +204,9 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
     private OnRecyclerViewItemLongClickListener longClickListener = new OnRecyclerViewItemLongClickListener() {
         @Override
         public boolean onLongClick(View v, int position) {
-            selectFile = beanList.get(position);
-            String path = selectFile.getFile_path();
-            File file = null;
-            if (path != "") {
-                file = new File(path);
-            }
-            if (file != null && file.isFile()) {
-                DialogFileOperation dialogFileOperation = DialogFileOperation.createDialog(RecordActivity.this);
-                dialogFileOperation.setListener(onItemClickListener);
-                dialogFileOperation.show();
-            }
+            DialogFileOperation dialogFileOperation = DialogFileOperation.createDialog(RecordActivity.this);
+            dialogFileOperation.setListener(onItemClickListener);
+            dialogFileOperation.show();
             return true;
         }
     };
@@ -219,6 +214,7 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
     private OnRecyclerViewItemClickListener listener = new OnRecyclerViewItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
+
             selectFile = beanList.get(position);
             String path = selectFile.getFile_path();
             File file = null;
@@ -226,8 +222,6 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
                 file = new File(path);
             }
             if (file != null && file.isFile()) {
-                ToastShort.showS("文件信息\n文件名：" + file.getName() + "\n文件路径：" + path + "\n提取码：" + beanList.get(position).getFile_code());
-
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 Logger.e("获得的文件超链接：" + FileTypeUtils.getMIMEType(file));
                 intent.setDataAndType(Uri.parse("file://" + path), FileTypeUtils.getMIMEType(file));
@@ -248,9 +242,9 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
         @Override
         public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
             String text = ((SimpleAdapter.ViewHolder) view.getTag()).textView.getText().toString();
+            Logger.e("fuck");
             switch (text) {
                 case DIALOG_FILE_INFO:
-                    EventBusInstance.getBusInstance().post(new EventToastInfo("文件信息：：：："));
                     if (selectFile != null) {
                         String info = "文件信息\n\n文件名：" + selectFile.getFile_name() +
                                 "\n\n文件路径：" + selectFile.getFile_path() +
@@ -266,7 +260,13 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
                     }
                     break;
                 case DIALOG_QR:
-                    EventBusInstance.getBusInstance().post(new EventToastInfo("二维码：：：："));
+                    EventBusInstance.getBusInstance().post(new EventToastInfo("生成二维码"));
+                    if (selectFile != null) {
+                        QRCodeView qrCodeView = new QRCodeView();
+                        qrCodeView.setType(ScanMsgUtil.ScanType.CLASS);
+                        qrCodeView.setData("" + selectFile.getFile_code());
+                        qrCodeView.show(getSupportFragmentManager(), "");
+                    }
                     break;
                 case DIALOG_DELETE_RECORD:
                     //发送通知，删除记录
@@ -359,6 +359,7 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
                 //并更新此界面。
                 if (adapter != null) {
                     adapter.add(b);
+                    beanList.add(b);
                 }
             }
         }
@@ -394,12 +395,14 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
 
         //如果下载完成，存储到record数据库
         if (eventU.isDone()) {
-            if (dbr.queryWithCode(eventU.getBean().getFile_code()).size() <= 0 && bean != null) {
+            if (dbr.queryWithCode(eventU.getBean().getFile_code()).size() <= 0 && bean != null && bean.getFile_code() != null) {
+                Logger.e("显示code：" + bean.getFile_code());
                 FileInfoBean b = BeanTypeUtils.getFromFU(bean);
                 dbr.insertFileInfo(b);
                 //并更新此界面。
                 if (adapter != null) {
                     adapter.add(b);
+                    beanList.add(b);
                 }
             }
         }
@@ -412,6 +415,8 @@ public class RecordActivity extends FragmentActivity implements RecordContract.V
             return;
         }
         dbu.deleteFileInfoWithMD5(eventFailedToUpload.getMD5());
-        ToastShort.show(context, "不存在MD5：" + eventFailedToUpload.getMD5());
+        //ToastShort.show(context, "不存在MD5：" + eventFailedToUpload.getMD5());
+
     }
+
 }

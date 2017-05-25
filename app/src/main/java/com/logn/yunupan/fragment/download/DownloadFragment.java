@@ -1,6 +1,9 @@
 package com.logn.yunupan.fragment.download;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,19 +23,30 @@ import android.widget.Toast;
 import com.example.easybar.OnImageCircleButtonClickedListener;
 import com.example.easybar.RoundRectButton;
 import com.logn.yunupan.R;
+import com.logn.yunupan.activity.record.RecordActivity;
 import com.logn.yunupan.adapter.DownloadListAdapter;
+import com.logn.yunupan.adapter.SimpleAdapter;
 import com.logn.yunupan.entity.greendao.FileDownloadBean;
+import com.logn.yunupan.entity.greendao.FileInfoBean;
+import com.logn.yunupan.utils.FileTypeUtils;
 import com.logn.yunupan.utils.SimpleItemDecoration;
+import com.logn.yunupan.utils.ToastShort;
 import com.logn.yunupan.utils.eventbus.EventBusInstance;
+import com.logn.yunupan.utils.eventbus.EventDialogForFile;
 import com.logn.yunupan.utils.eventbus.EventFailedToDownload;
 import com.logn.yunupan.utils.eventbus.EventProgressD;
+import com.logn.yunupan.utils.eventbus.EventToastInfo;
 import com.logn.yunupan.utils.greendao.DBManagerD;
+import com.logn.yunupan.utils.logger.Logger;
 import com.logn.yunupan.views.EditTextWithDivLine;
 import com.logn.yunupan.views.TitleBarView.TitleBar;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.OnItemClickListener;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -277,6 +292,59 @@ public class DownloadFragment extends Fragment implements DownloadContract.View,
             mPresemter.start2Prepare(code);
         } else {
             Toast.makeText(context, "提取码为 4 位数", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @Subscribe
+    public void dialogForFileOpen(EventDialogForFile eventDialogForFile) {
+        final FileInfoBean bean = eventDialogForFile.getBean();
+        if (bean != null) {
+            SimpleAdapter adapter = new SimpleAdapter(getActivity(), true);
+            List<String> list = new ArrayList<>();
+            list.add("文件已下载");
+            list.add("文件名：" + bean.getFile_name());
+            list.add("打开文件");
+            list.add("取消");
+            adapter.setList(list);
+            DialogPlus dialogPlus = DialogPlus.newDialog(getActivity())
+                    .setAdapter(adapter)
+                    .setOnItemClickListener(new OnItemClickListener() {
+                        @Override
+                        public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
+                            switch (position) {
+                                case 0:
+                                case 1:
+                                    break;
+                                case 2:
+                                    String path = bean.getFile_path();
+                                    File file = null;
+                                    if (path != "") {
+                                        file = new File(path);
+                                    }
+                                    if (file != null && file.isFile()) {
+                                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                                        Logger.e("获得的文件超链接：" + FileTypeUtils.getMIMEType(file));
+                                        intent.setDataAndType(Uri.parse("file://" + path), FileTypeUtils.getMIMEType(file));
+                                        // start activity
+                                        try {
+                                            startActivity(intent);
+                                        } catch (ActivityNotFoundException e) {
+                                            Toast.makeText(getActivity(), "" + getContext().getResources().getString(R.string.app_un_support), Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else {
+                                        ToastShort.show(context, "文件不存在");
+                                    }
+                                    break;
+                                default:
+                                    dialog.dismiss();
+                            }
+                        }
+                    })
+                    .setGravity(Gravity.CENTER)
+                    .setExpanded(false)
+                    .create();
+            dialogPlus.show();
         }
     }
 }

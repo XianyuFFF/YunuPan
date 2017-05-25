@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:id="@+id/activity_file_manager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightblue"
+    android:orientation="vertical"
     tools:context=".utils.file_manager.FileManager">
-    <include layout="@layout/bar_item"/>
+
+    <include layout="@layout/bar_item" />
 
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:scrollingCache="false"
-        android:background="@color/white"
+        android:layout_height="match_parent"
         android:animationCache="false"
-        android:layout_height="match_parent">
+        android:background="@color/white"
+        android:scrollingCache="false">
 
     </ListView>
 </LinearLayout>
